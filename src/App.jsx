@@ -1,10 +1,14 @@
-const App=()=> {
+import Navbar from "./componets/Navbar";
+import Hero from "./componets/Hero";
+import Highlights from "./componets/Highlights";
 
+const App = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-  )
-}
-
-export default App
+    <main className="bg-black">
+      <Navbar/>
+      <Hero/>
+      <Highlights/>
+    </main>
+  );
+};
+export default App;
