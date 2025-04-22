@@ -25,8 +25,8 @@ const Model = () => {
   const large = useRef(new THREE.Group());
 
   //roation
-  const [smallRotation, setSmallRoation] = useState(0);
-  const [largeRotation, setLargeRoation] = useState(0);
+  const [smallRotation, setSmallRotation] = useState(0);
+  const [largeRotation, setLargeRotation] = useState(0);
 
   useGSAP(() => {
     gsap.to("#heading", {
@@ -39,39 +39,42 @@ const Model = () => {
     <section className="common-padding">
       <div className="screen-max-width">
         <h1 id="heading" className="section-heading">
-          Take a closer look
+          Take a closer look.
         </h1>
+
         <div className="flex flex-col items-center mt-5">
           <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative">
-            <ModelView
+          <ModelView 
               index={1}
               groupRef={small}
               gsapType="view1"
               controlRef={cameraControlSmall}
-              setRotationState={setSmallRoation}
+              setRotationState={setSmallRotation}
               item={model}
               size={size}
-            />
-            <ModelView
+            />  
+
+            <ModelView 
               index={2}
               groupRef={large}
               gsapType="view2"
               controlRef={cameraControlLarge}
-              setRotationState={setLargeRoation}
+              setRotationState={setLargeRotation}
               item={model}
               size={size}
             />
+
             <Canvas
               className="w-full h-full"
               style={{
-                position: "fixed",
+                position: 'fixed',
                 top: 0,
                 bottom: 0,
                 left: 0,
                 right: 0,
-                overflow: "hidden",
+                overflow: 'hidden'
               }}
-              eventSource={document.getElementById("root")} //event source part good when trying to interact with the mpdel we work with
+              eventSource={document.getElementById('root')}
             >
               <View.Port />
             </Canvas>

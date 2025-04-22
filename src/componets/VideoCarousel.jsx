@@ -97,12 +97,14 @@ const VideoCarousel = () => {
         anim.restart();
       }
 
-      const animUpdate = () => {
-        anim.progress(
-          videoRef.current[videoId].currentTime /
-            hightlightsSlides[videoId].videoDuration
-        );
-      };
+// update the progress bar
+const animUpdate = () => {
+  anim.progress(
+    videoRef.current[videoId].currentTime /
+      hightlightsSlides[videoId].videoDuration
+  );
+};
+
       if (isPlaying) {
         gsap.ticker.add(animUpdate);
       } else {
