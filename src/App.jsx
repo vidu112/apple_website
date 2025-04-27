@@ -2,6 +2,7 @@ import Navbar from "./componets/Navbar";
 import Hero from "./componets/Hero";
 import Highlights from "./componets/Highlights";
 import Model from "./componets/Model";
+import Features from "./componets/Features";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Hero/>
       <Highlights/>
       <Model/>
+      <Features/>
     </main>
   );
 };
