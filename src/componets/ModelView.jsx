@@ -6,7 +6,7 @@ import {
   OrbitControls,
 } from "@react-three/drei";
 import Lights from "./Lights";
-import IPhone from "./Iphone";
+import IPhone from "./IPhone";
 import * as THREE from 'three';
 const ModelView = (
   index,
