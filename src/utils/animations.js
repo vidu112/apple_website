@@ -3,18 +3,17 @@ import gsap from 'gsap'
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const animeWithGsap = (target, animationProps,scrolProps)=>{
-    gsap.to(target,{
-        ...animationProps,
-        ScrollTrigger:{
-            trigger:target,
-            toggleActions: 'restart reverse restart reverse',
-            start: 'top 85%' ,
-            ...scrolProps
-        }
+export const animateWithGsap = (target, animationProps, scrollProps) => {
+    gsap.to(target, {
+      ...animationProps,
+      scrollTrigger: {
+        trigger: target,
+        toggleActions: 'restart reverse restart reverse',
+        start: 'top 85%',
+        ...scrollProps,
+      }
     })
-}
-
+  }
 
 export const animateWithGsapTimeline = (timeline,rotationRef,rotationState,firstTarget,secondTarget,animationProp) => {
     timeline.to(rotationRef.current.rotation,{
