@@ -1,5 +1,5 @@
 import { useGSAP } from "@gsap/react";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ModelView from "./ModelView";
 import { yellowImg } from "../utils";
@@ -7,6 +7,7 @@ import * as THREE from "three";
 import { View } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { models, sizes } from "../constants";
+import { animateWithGsapTimeline } from "../utils/animations";
 
 const Model = () => {
   const [size, setSize] = useState("small");
@@ -27,6 +28,24 @@ const Model = () => {
   //roation
   const [smallRotation, setSmallRotation] = useState(0);
   const [largeRotation, setLargeRotation] = useState(0);
+
+  const tl = gsap.timeline();
+
+  useEffect(() => {
+    if(size === 'large') {
+      animateWithGsapTimeline(tl, small, smallRotation, '#view1', '#view2', {
+        transform: 'translateX(-100%)',
+        duration: 2
+      })
+    }
+
+    if(size ==='small') {
+      animateWithGsapTimeline(tl, large, largeRotation, '#view2', '#view1', {
+        transform: 'translateX(0)',
+        duration: 2
+      })
+    }
+  }, [size])
 
   useGSAP(() => {
     gsap.to("#heading", {
@@ -67,14 +86,14 @@ const Model = () => {
             <Canvas
               className="w-full h-full"
               style={{
-                position: 'fixed',
+                position: "fixed",
                 top: 0,
                 bottom: 0,
                 left: 0,
                 right: 0,
-                overflow: 'hidden'
+                overflow: "hidden",
               }}
-              eventSource={document.getElementById('root')}
+              eventSource={document.getElementById("root")}
             >
               <View.Port />
             </Canvas>
